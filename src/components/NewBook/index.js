@@ -24,11 +24,19 @@ export default function NewBook() {
             lauchDate,
             price
         }
+
+        const header = {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
+        }
+
         try {
-            const response = await api.post('')
+            const response = await api.post('api/book', data, header);
+            return navigate ('/books');
         }
         catch (error) {
-            alert('Error while recording Book! Try again.');
+            alert('Error while recording Book! Try again: ' + error.message);
         }
     }
 
